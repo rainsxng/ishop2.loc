@@ -9,8 +9,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <head>
     <?=$this->getMeta();?>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
-    <script src="js/jquery-1.11.0.min.js"></script>
     <!--Custom-Theme-files-->
     <!--theme-style-->
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -18,12 +16,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!--start-menu-->
-    <script src="js/simpleCart.min.js"> </script>
     <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-    <script type="text/javascript" src="js/memenu.js"></script>
-    <script>$(document).ready(function(){$(".memenu").memenu();});</script>
-    <!--dropdown-->
-    <script src="js/jquery.easydropdown.js"></script>
 </head>
 <body>
 <!--top-header-->
@@ -33,10 +26,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="col-md-6 top-header-left">
                 <div class="drop">
                     <div class="box">
-                        <select tabindex="4" class="dropdown drop">
-                            <option value="" class="label">Dollar :</option>
-                            <option value="1">Dollar</option>
-                            <option value="2">Euro</option>
+                        <select id="currency" tabindex="4" class="dropdown drop">
+                            <?php new \app\widgets\currency\Currency(); ?>
                         </select>
                     </div>
                     <div class="box1">
@@ -225,6 +216,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
 </div>
+<!--bottom-header-->
 
 <div class="content">
     <?=$content;?>
@@ -293,5 +285,35 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </div>
 </div>
 <!--footer-end-->
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/simpleCart.min.js"> </script>
+<script type="text/javascript" src="js/memenu.js"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<!--dropdown-->
+<script src="js/jquery.easydropdown.js"></script>
+<!--Slider-Starts-Here-->
+<script src="js/responsiveslides.min.js"></script>
+<script>
+    // You can also use "$(window).load(function() {"
+    $(function () {
+        // Slideshow 4
+        $("#slider4").responsiveSlides({
+            auto: true,
+            pager: true,
+            nav: true,
+            speed: 500,
+            namespace: "callbacks",
+            before: function () {
+                $('.events').append("<li>before event fired.</li>");
+            },
+            after: function () {
+                $('.events').append("<li>after event fired.</li>");
+            }
+        });
+
+    });
+</script>
+<script src="js/main.js"></script>
+<!--End-slider-script-->
 </body>
 </html>
